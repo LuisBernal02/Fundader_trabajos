@@ -1,0 +1,88 @@
+Creación de tabla flights 
+
+CREATE TABLE flights (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	origin VARCHAR(255) NOT NULL,
+	destination VARCHAR(255) NOT NULL,
+	duration INT NOT NULL
+)
+
+Llenar tabla flights
+INSERT INTO flights(origin,destination,duration)VALUES("New York","London",425);
+
+INSERT INTO flights(origin,destination,duration)VALUES("Shangai","Paris",760);
+
+INSERT INTO flights(origin,destination,duration)VALUES("Panama","Costa Rica",200);
+
+INSERT INTO flights(origin,destination,duration)VALUES("Mexico","Argentina",600);
+
+INSERT INTO flights(origin,destination,duration)VALUES("Instanbul","Tokyo",700);
+
+INSERT INTO flights(origin,destination,duration)VALUES("New York","Paris",435);
+
+INSERT INTO flights(origin,destination,duration)VALUES("Moscou","Paris",245);
+
+INSERT INTO flights(origin,destination,duration)VALUES("Lima","New York",435);
+
+Creación de tabla passenger
+CREATE TABLE passenger ( 
+
+	id INT AUTO_INCREMENT PRIMARY KEY, 
+
+	name VARCHAR(255) NOT NULL, 
+
+	flights_id INT NOT NULL, 
+
+	FOREIGN KEY (flights_id) REFERENCES flights(id) 
+
+)
+
+Llenar tabla passenger
+INSERT INTO passenger(name, flights_id)values("Alice",1);
+
+INSERT INTO passenger(name, flights_id)values("Bob",1);
+
+INSERT INTO passenger(name, flights_id)values("Charlie",2);
+
+INSERT INTO passenger(name, flights_id)values("Dave",2);
+
+INSERT INTO passenger(name, flights_id)values("Erin",4);
+
+INSERT INTO passenger(name, flights_id)values("Frank",6);
+
+INSERT INTO passenger(name, flights_id)values("Grace",6);
+
+
+
+QUERIES
+SELECT origin, COUNT(*) FROM flights GROUP BY origin
+SELECT origin, COUNT(*) FROM flights GROUP BY origin HAVING COUNT(*) > 1
+
+SELECT origin, destination, name FROM flights JOIN passenger ON passenger.flights_id = flights.id
+
+
+Para complicarlo más podríamos decirle que solamente queremos el vuelo donde viajo Alice, utilizaríamos el siguiente query:
+
+SELECT origin, destination, name FROM flights JOIN passenger ON passenger.flights_id = flights.id WHERE name = "Alice"
+
+En caso de que queramos solamente los datos que cumplen con esa condición y pertenezcan a la tabla flights podríamos utilizar la siguiente sentencia.
+
+SELECT origin, destination, name FROM flights LEFT JOIN passenger ON passenger.flights_id = flights.id
+
+O queremos solamente los datos de esa condición que pertenezcan a la tabla Passenger, utilizaríamos este query:
+
+SELECT origin, destination, name FROM flights RIGHT JOIN passenger ON passenger.flights_id = flights.id
+
+
+
+
+QUERIES ADICIONALES
+Select origin, destination from flights where duration BETWEEN 200 AND 460 // escoge los vuelos en donde la duracion está dentro del rango 200 a 460
+Select origin from flights ORDER BY origin // Se puede colocar en strings y en numeros ya que los ordena por letras del abecedario y por numeros de menor a mayor
+SELECT origin from flights where origin LIKE 'N%' // Devuelve del campo origines, todos los valores que empiecen por N 
+SELECT origin from flights where origin LIKE '%ork' // Devuelve del campo origenes, todos los valores que terminen con ork
+SELECT origin, COUNT(*) FROM flights GROUP BY origin
+
+
+
+
