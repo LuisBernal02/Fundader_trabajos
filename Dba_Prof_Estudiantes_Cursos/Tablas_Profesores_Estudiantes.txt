@@ -1,0 +1,40 @@
+
+Creación de tablas de la relación anteriormente entregada
+
+CREATE TABLE Estudiantes (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	Nombre VARCHAR(255) NOT NULL,
+	Apellido VARCHAR(255) NOT NULL,
+	Cédula VARCHAR(255) NOT NULL,
+	Edad INT NOT NULL,
+	Sexo VARCHAR(255) NOT NULL,
+	Celular VARCHAR(255) NOT NULL,
+	Materia INT NOT NULL,
+	FOREIGN KEY (Materia) REFERENCES Profesores(Materia) 
+)
+
+INSERT INTO Estudiantes(Nombre,Apellido,Cédula,Edad,Sexo,Celular)VALUES("Rosa","Girón","8-993-1211",23,"Femenino","6718-0911",1);
+INSERT INTO Estudiantes(Nombre,Apellido,Cédula,Edad,Sexo,Celular)VALUES("Ramón","Gonzalez","8-012-99",17,"Masculino","6712-8241",2);
+INSERT INTO Estudiantes(Nombre,Apellido,Cédula,Edad,Sexo,Celular)VALUES("Lisa","Fuentes","13-051-9912",27,"Femenino","6908-1231",3);
+INSERT INTO Estudiantes(Nombre,Apellido,Cédula,Edad,Sexo,Celular)VALUES("Leo","Villalaz","9-645-1901",19,"Masculino","6418-0000",4);
+INSERT INTO Estudiantes(Nombre,Apellido,Cédula,Edad,Sexo,Celular)VALUES("Paola","Mosquera","7-313-6012",21,"Femenino","6531-8555",5);
+INSERT INTO Estudiantes(Nombre,Apellido,Cédula,Edad,Sexo,Celular)VALUES("Alex","Martinez","6-778-1773",20,"Masculino","6100-0877",6);
+INSERT INTO Estudiantes(Nombre,Apellido,Cédula,Edad,Sexo,Celular)VALUES("Maria","Perez","8-733-1209",18,"Femenino","6443-0894",7);
+
+CREATE TABLE Profesores (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	Nombre VARCHAR(255) NOT NULL,
+	Apellido VARCHAR(255) NOT NULL,
+	Cédula VARCHAR(255) NOT NULL,
+	Materia VARCHAR(255) NOT NULL,
+	Hora TIME NOT NULL,
+	Celular VARCHAR(255) NOT NULL
+)
+
+INSERT INTO Profesores(Nombre,Apellido,Cédula,Materia,Celular)VALUES("Jairo","Martinez","8-931-1001","Programación",7:00,"6212-0922");
+INSERT INTO Profesores(Nombre,Apellido,Cédula,Materia,Celular)VALUES("Francisco","Romero","7-923-1111","Contabilidad",8:00,"6222-0108");
+INSERT INTO Profesores(Nombre,Apellido,Cédula,Materia,Celular)VALUES("Maryan","Muñoz","13-331-1091","Redes",9:00,"6472-0209");
+INSERT INTO Profesores(Nombre,Apellido,Cédula,Materia,Celular)VALUES("Dayra","Murillo","6-944-1071","Ecuaciones",10:00,"6202-0145");
+INSERT INTO Profesores(Nombre,Apellido,Cédula,Materia,Celular)VALUES("Laura","Ramirez","7-764-1601","Inteligencia Aritificial",11:00,"6290-4526");
+INSERT INTO Profesores(Nombre,Apellido,Cédula,Materia,Celular)VALUES("Arturo","Acevedo","13-181-1431","Base de Datos",12:00,"6567-0973");
+INSERT INTO Profesores(Nombre,Apellido,Cédula,Materia,Celular)VALUES("Carla","Bonila","7-451-7721","Metodología de la Investigación",13:00,"6562-0342");
